@@ -14,9 +14,9 @@ namespace TrackMe.Web
 
         void Application_Start(object sender, EventArgs e)
         {
-            IUserManager manager = IOCContainerFactory.Instance.CurrentContainer.Resolve<IUserManager>();
-            manager.CreateUser("admin", "admin", "user", "admin@trackme.com.ar", "123456$", true);
-            manager.CreateUser("test", "test", "user", "test@trackme.com.ar", "123456$", false);
+            //IUserManager manager = IOCContainerFactory.Instance.CurrentContainer.Resolve<IUserManager>();
+            //manager.CreateUser("admin", "admin", "user", "admin@trackme.com.ar", "123456$", true);
+            //manager.CreateUser("test", "test", "user", "test@trackme.com.ar", "123456$", false);
         }
 
         void Application_End(object sender, EventArgs e)
