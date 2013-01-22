@@ -1,0 +1,2 @@
+InstallUtil.exe "{Path}\TrackMe\trunk\TrackMe\TrackMe.Location.Service\bin\Debug\TrackMe.Location.Service.exe"
+InstallUtil.exe /u "{Path}\TrackMe\trunk\TrackMe\TrackMe.Location.Service\bin\Debug\TrackMe.Location.Service.exe"

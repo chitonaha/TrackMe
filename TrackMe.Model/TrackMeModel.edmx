@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TrackMeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TrackMeModelStoreContainer">
+          <EntitySet Name="DeviceImages" EntityType="TrackMeModel.Store.DeviceImages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Devices" EntityType="TrackMeModel.Store.Devices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DeviceTypes" EntityType="TrackMeModel.Store.DeviceTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Directions" EntityType="TrackMeModel.Store.Directions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Images" EntityType="TrackMeModel.Store.Images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tracks" EntityType="TrackMeModel.Store.Tracks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserDevices" EntityType="TrackMeModel.Store.UserDevices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="TrackMeModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_DeviceImages_Devices" Association="TrackMeModel.Store.FK_DeviceImages_Devices">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="DeviceImages" EntitySet="DeviceImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceImages_Images" Association="TrackMeModel.Store.FK_DeviceImages_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="DeviceImages" EntitySet="DeviceImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Devices_DeviceTypes" Association="TrackMeModel.Store.FK_Devices_DeviceTypes">
+            <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracks_Devices" Association="TrackMeModel.Store.FK_Tracks_Devices">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="Tracks" EntitySet="Tracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDevices_Devices" Association="TrackMeModel.Store.FK_UserDevices_Devices">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="UserDevices" EntitySet="UserDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDevices_Users" Association="TrackMeModel.Store.FK_UserDevices_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserDevices" EntitySet="UserDevices" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DeviceImages">
+          <Key>
+            <PropertyRef Name="DeviceImagesId" />
+          </Key>
+          <Property Name="DeviceImagesId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceId" Type="int" Nullable="false" />
+          <Property Name="ImageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="DeviceId" />
+          </Key>
+          <Property Name="DeviceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DeviceTypeId" Type="int" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceTypes">
+          <Key>
+            <PropertyRef Name="DeviceTypeId" />
+          </Key>
+          <Property Name="DeviceTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Directions">
+          <Key>
+            <PropertyRef Name="DirectionId" />
+          </Key>
+          <Property Name="DirectionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="State" Type="nvarchar" MaxLength="250" />
+          <Property Name="Country" Type="nvarchar" MaxLength="250" />
+          <Property Name="Latitude" Type="decimal" Scale="18" />
+          <Property Name="Longitude" Type="decimal" Scale="18" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ImageKey" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tracks">
+          <Key>
+            <PropertyRef Name="TrackId" />
+          </Key>
+          <Property Name="TrackId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceId" Type="int" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Nullable="false" Scale="15" />
+          <Property Name="Longitude" Type="decimal" Nullable="false" Scale="15" />
+          <Property Name="TrackDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDevices">
+          <Key>
+            <PropertyRef Name="UserDeviceId" />
+          </Key>
+          <Property Name="UserDeviceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DeviceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+          <Property Name="MembershipId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DeviceImages_Devices">
+          <End Role="Devices" Type="TrackMeModel.Store.Devices" Multiplicity="1" />
+          <End Role="DeviceImages" Type="TrackMeModel.Store.DeviceImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="DeviceId" />
+            </Principal>
+            <Dependent Role="DeviceImages">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceImages_Images">
+          <End Role="Images" Type="TrackMeModel.Store.Images" Multiplicity="1" />
+          <End Role="DeviceImages" Type="TrackMeModel.Store.DeviceImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="ImageId" />
+            </Principal>
+            <Dependent Role="DeviceImages">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Devices_DeviceTypes">
+          <End Role="DeviceTypes" Type="TrackMeModel.Store.DeviceTypes" Multiplicity="1" />
+          <End Role="Devices" Type="TrackMeModel.Store.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypes">
+              <PropertyRef Name="DeviceTypeId" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="DeviceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracks_Devices">
+          <End Role="Devices" Type="TrackMeModel.Store.Devices" Multiplicity="1" />
+          <End Role="Tracks" Type="TrackMeModel.Store.Tracks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="DeviceId" />
+            </Principal>
+            <Dependent Role="Tracks">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDevices_Devices">
+          <End Role="Devices" Type="TrackMeModel.Store.Devices" Multiplicity="1" />
+          <End Role="UserDevices" Type="TrackMeModel.Store.UserDevices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="DeviceId" />
+            </Principal>
+            <Dependent Role="UserDevices">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDevices_Users">
+          <End Role="Users" Type="TrackMeModel.Store.Users" Multiplicity="1" />
+          <End Role="UserDevices" Type="TrackMeModel.Store.UserDevices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDevices">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TrackMeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TrackMeContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Directions" EntityType="TrackMeModel.Direction" />
+          <EntitySet Name="UserDevices" EntityType="TrackMeModel.UserDevice" />
+          <EntitySet Name="Users" EntityType="TrackMeModel.User" />
+          <AssociationSet Name="FK_UserDevices_Users" Association="TrackMeModel.FK_UserDevices_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserDevices" EntitySet="UserDevices" />
+          </AssociationSet>
+          <EntitySet Name="Tracks" EntityType="TrackMeModel.Track" />
+          <EntitySet Name="DeviceTypes" EntityType="TrackMeModel.DeviceType" />
+          <EntitySet Name="DeviceImages" EntityType="TrackMeModel.DeviceImage" />
+          <EntitySet Name="Images" EntityType="TrackMeModel.Image" />
+          <AssociationSet Name="FK_DeviceImages_Images" Association="TrackMeModel.FK_DeviceImages_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="DeviceImage" EntitySet="DeviceImages" />
+          </AssociationSet>
+          <EntitySet Name="Devices" EntityType="TrackMeModel.Device" />
+          <AssociationSet Name="FK_DeviceImages_Devices" Association="TrackMeModel.FK_DeviceImages_Devices">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="DeviceImage" EntitySet="DeviceImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Devices_DeviceTypes" Association="TrackMeModel.FK_Devices_DeviceTypes">
+            <End Role="DeviceType" EntitySet="DeviceTypes" />
+            <End Role="Device" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracks_Devices" Association="TrackMeModel.FK_Tracks_Devices">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Track" EntitySet="Tracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDevices_Devices" Association="TrackMeModel.FK_UserDevices_Devices">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="UserDevice" EntitySet="UserDevices" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Direction">
+          <Key>
+            <PropertyRef Name="DirectionId" />
+          </Key>
+          <Property Name="DirectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="18" />
+          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="18" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserDevice">
+          <Key>
+            <PropertyRef Name="UserDeviceId" />
+          </Key>
+          <Property Name="UserDeviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="TrackMeModel.FK_UserDevices_Users" FromRole="UserDevices" ToRole="Users" />
+          <NavigationProperty Name="Device" Relationship="TrackMeModel.FK_UserDevices_Devices" FromRole="UserDevice" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="MembershipId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="UserDevices" Relationship="TrackMeModel.FK_UserDevices_Users" FromRole="Users" ToRole="UserDevices" />
+        </EntityType>
+        <Association Name="FK_UserDevices_Users">
+          <End Role="Users" Type="TrackMeModel.User" Multiplicity="1" />
+          <End Role="UserDevices" Type="TrackMeModel.UserDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDevices">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Track">
+          <Key>
+            <PropertyRef Name="TrackId" />
+          </Key>
+          <Property Type="Int32" Name="TrackId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeviceId" Nullable="false" />
+          <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="TrackDate" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="TrackMeModel.FK_Tracks_Devices" FromRole="Track" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="DeviceType">
+          <Key>
+            <PropertyRef Name="DeviceTypeId" />
+          </Key>
+          <Property Type="Int32" Name="DeviceTypeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Devices" Relationship="TrackMeModel.FK_Devices_DeviceTypes" FromRole="DeviceType" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="DeviceImage">
+          <Key>
+            <PropertyRef Name="DeviceImagesId" />
+          </Key>
+          <Property Type="Int32" Name="DeviceImagesId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeviceId" Nullable="false" />
+          <Property Type="Int32" Name="ImageId" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="TrackMeModel.FK_DeviceImages_Images" FromRole="DeviceImage" ToRole="Image" />
+          <NavigationProperty Name="Device" Relationship="TrackMeModel.FK_DeviceImages_Devices" FromRole="DeviceImage" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Type="Int32" Name="ImageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FileName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageKey" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DeviceImages" Relationship="TrackMeModel.FK_DeviceImages_Images" FromRole="Image" ToRole="DeviceImage" />
+        </EntityType>
+        <Association Name="FK_DeviceImages_Images">
+          <End Type="TrackMeModel.Image" Role="Image" Multiplicity="1" />
+          <End Type="TrackMeModel.DeviceImage" Role="DeviceImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageId" />
+            </Principal>
+            <Dependent Role="DeviceImage">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="DeviceId" />
+          </Key>
+          <Property Type="Int32" Name="DeviceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DeviceTypeId" Nullable="false" />
+          <Property Type="Boolean" Name="IsDisabled" Nullable="false" />
+          <NavigationProperty Name="DeviceImages" Relationship="TrackMeModel.FK_DeviceImages_Devices" FromRole="Device" ToRole="DeviceImage" />
+          <NavigationProperty Name="DeviceType" Relationship="TrackMeModel.FK_Devices_DeviceTypes" FromRole="Device" ToRole="DeviceType" />
+          <NavigationProperty Name="Tracks" Relationship="TrackMeModel.FK_Tracks_Devices" FromRole="Device" ToRole="Track" />
+          <NavigationProperty Name="UserDevices" Relationship="TrackMeModel.FK_UserDevices_Devices" FromRole="Device" ToRole="UserDevice" />
+        </EntityType>
+        <Association Name="FK_DeviceImages_Devices">
+          <End Type="TrackMeModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="TrackMeModel.DeviceImage" Role="DeviceImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="DeviceId" />
+            </Principal>
+            <Dependent Role="DeviceImage">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Devices_DeviceTypes">
+          <End Type="TrackMeModel.DeviceType" Role="DeviceType" Multiplicity="1" />
+          <End Type="TrackMeModel.Device" Role="Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceType">
+              <PropertyRef Name="DeviceTypeId" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="DeviceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracks_Devices">
+          <End Type="TrackMeModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="TrackMeModel.Track" Role="Track" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="DeviceId" />
+            </Principal>
+            <Dependent Role="Track">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDevices_Devices">
+          <End Type="TrackMeModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="TrackMeModel.UserDevice" Role="UserDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="DeviceId" />
+            </Principal>
+            <Dependent Role="UserDevice">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TrackMeModelStoreContainer" CdmEntityContainer="TrackMeContext">
+          <EntitySetMapping Name="Directions"><EntityTypeMapping TypeName="TrackMeModel.Direction"><MappingFragment StoreEntitySet="Directions">
+            <ScalarProperty Name="DirectionId" ColumnName="DirectionId" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+            <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserDevices"><EntityTypeMapping TypeName="TrackMeModel.UserDevice"><MappingFragment StoreEntitySet="UserDevices">
+            <ScalarProperty Name="UserDeviceId" ColumnName="UserDeviceId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="TrackMeModel.User"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="MembershipId" ColumnName="MembershipId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Tracks">
+            <EntityTypeMapping TypeName="TrackMeModel.Track">
+              <MappingFragment StoreEntitySet="Tracks">
+                <ScalarProperty Name="TrackDate" ColumnName="TrackDate" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTypes">
+            <EntityTypeMapping TypeName="TrackMeModel.DeviceType">
+              <MappingFragment StoreEntitySet="DeviceTypes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DeviceTypeId" ColumnName="DeviceTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceImages">
+            <EntityTypeMapping TypeName="TrackMeModel.DeviceImage">
+              <MappingFragment StoreEntitySet="DeviceImages">
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="DeviceImagesId" ColumnName="DeviceImagesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="TrackMeModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ImageKey" ColumnName="ImageKey" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="TrackMeModel.Device">
+              <MappingFragment StoreEntitySet="Devices">
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="DeviceTypeId" ColumnName="DeviceTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TrackMeModel">
+        <EntityTypeShape EntityType="TrackMeModel.Direction" Width="1.5" PointX="5.75" PointY="2" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrackMeModel.UserDevice" Width="1.5" PointX="3" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrackMeModel.User" Width="1.5" PointX="0.75" PointY="7.5" Height="1.9802864583333326" IsExpanded="true" />
+        <AssociationConnector Association="TrackMeModel.FK_UserDevices_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.1365364583333317" />
+          <ConnectorPoint PointX="3.09375" PointY="9.1365364583333317" />
+          <ConnectorPoint PointX="3.09375" PointY="2.7302864583333335" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TrackMeModel.Track" Width="1.5" PointX="3.25" PointY="3.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="TrackMeModel.DeviceType" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="TrackMeModel.DeviceImage" Width="1.5" PointX="4.375" PointY="6.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="TrackMeModel.Image" Width="1.5" PointX="7" PointY="5.375" Height="1.7879850260416674" />
+        <AssociationConnector Association="TrackMeModel.FK_DeviceImages_Images" >
+          <ConnectorPoint PointX="7" PointY="6.9564925130208337" />
+          <ConnectorPoint PointX="5.875" PointY="6.9564925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TrackMeModel.Device" Width="1.5" PointX="0.625" PointY="3.875" Height="2.7494921874999996" />
+        <AssociationConnector Association="TrackMeModel.FK_DeviceImages_Devices" >
+          <ConnectorPoint PointX="2.125" PointY="6.2422900390625" />
+          <ConnectorPoint PointX="3.0104166666666665" PointY="6.2422900390624987" />
+          <ConnectorPoint PointX="3.1770833333333335" PointY="6.2422900390625" />
+          <ConnectorPoint PointX="5.25" PointY="6.2422900390625" />
+          <ConnectorPoint PointX="5.25" PointY="6.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="TrackMeModel.FK_Devices_DeviceTypes" >
+          <ConnectorPoint PointX="1.4375" PointY="2.34568359375" />
+          <ConnectorPoint PointX="1.4375" PointY="3.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="TrackMeModel.FK_Tracks_Devices" >
+          <ConnectorPoint PointX="2.125" PointY="4.8362939453125" />
+          <ConnectorPoint PointX="3.0104166666666665" PointY="4.8362939453124989" />
+          <ConnectorPoint PointX="3.1770833333333335" PointY="4.8362939453125" />
+          <ConnectorPoint PointX="3.25" PointY="4.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="TrackMeModel.FK_UserDevices_Devices" >
+          <ConnectorPoint PointX="0.65625" PointY="3.875" />
+          <ConnectorPoint PointX="0.65625" PointY="2.5692350260416665" />
+          <ConnectorPoint PointX="1.3541666666666667" PointY="2.5692350260416661" />
+          <ConnectorPoint PointX="1.5208333333333333" PointY="2.5692350260416665" />
+          <ConnectorPoint PointX="3" PointY="2.5692350260416665" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+#mainBanner {
+	width: 1000px;
+	margin: 0 auto;
+	height: 323px;
+	padding-top: 17px;
+	overflow: hidden;
+}
+.cs-buttons a {
+	background: rgb(204, 204, 204); border-radius: 50%;
+}
+a.cs-active {
+	background: rgb(89, 155, 220); border-radius: 50%; border: 1px solid rgb(48, 114, 179) !important; box-shadow: 0px 0px 3px #518cc6;
+}
+.coin-slider {
+	overflow: hidden; position: relative; zoom: 1;
+}
+.coin-slider a {
+	border: currentColor; text-decoration: none;
+}
+.cs-buttons {
+	padding: 10px; font-size: 0px; float: left;
+}
+.cs-buttons a {
+	border: 1px solid rgb(184, 196, 207); width: 10px; height: 10px; color: rgb(184, 196, 207); text-indent: -1000px; margin-left: 5px; float: left;
+}
+.cs-active {
+	color: rgb(255, 255, 255); background-color: rgb(184, 196, 207);
+}
+.cs-title {
+	padding: 10px; width: 545px; color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);
+}
+.cs-prev {
+	padding: 0px 10px; color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);
+}
+.cs-next {
+	padding: 0px 10px; color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);
+}
+.cs-buttons { display: none}

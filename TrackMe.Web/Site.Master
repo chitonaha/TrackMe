@@ -1,0 +1,215 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TrackMe.Web.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Track Me</title>
+    <link href="<%=ResolveClientUrl("~/Content/Styles/coin-slider-styles.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveClientUrl("~/Content/Styles/main-reset.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveClientUrl("~/Content/Styles/main-template.css")%>" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <script type="text/javascript" src="<%=ResolveClientUrl("~/Content/Scripts/coin-slider.min.js")%>?v1.0"></script>
+    <script type="text/javascript" src="<%=ResolveClientUrl("~/Content/Scripts/track.me.framework.js")%>?v1.0"></script>
+    <script type="text/javascript" src="<%=ResolveClientUrl("~/Content/Scripts/track.me.utils.js")%>?v1.0"></script>
+    <script type="text/javascript" src="<%=ResolveClientUrl("~/Content/Scripts/jquery.watermark.min.js")%>?v1.0"></script>
+    <script language="javascript" type="text/javascript">
+        var serverHost = "<%=ResolveClientUrl("~")%>";
+
+        function ShowLogin(){
+            $("table[id$='loginTable']").toggle();
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div class="main-header">
+     <div class="content-header">
+        <div class="login-option"> 
+          <ul>
+            <li><a href="<%=ResolveClientUrl("~/Site/Default.aspx")%>">HOME</a></li>
+            <li><a href="<%=ResolveClientUrl("~/Site/AboutUs.aspx")%>">EMPRESA</a></li>
+            <li><a href="<%=ResolveClientUrl("~/Site/Services.aspx")%>">SERVICIO</a></li>
+            <li><a href="<%=ResolveClientUrl("~/Site/ContactUs.aspx")%>">CONTACTO</a></li>
+            <% if (!HttpContext.Current.Request.IsAuthenticated)
+               { %>
+            <li><a href="javascript: ShowLogin();">LOGIN</a></li>
+            <% }
+               else
+               { %>
+            <li ><a href="<%=ResolveClientUrl("~/Account/LogOut.aspx")%>" class="log-out">LOGOUT</a></li>
+            <% } %>
+          </ul>
+        <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+            <AnonymousTemplate>
+            <asp:Login ID="Login" runat="server" EnableViewState="false" RenderOuterTable="false">
+                <LayoutTemplate>
+                <table runat="server" id="loginTable" class="tooltip-table-b" border="0" cellspacing="0" cellpadding="0" style="display: none">
+                    <tr>
+                        <td class="tooltip-corner-left-top-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_01b.png")%>" width="7" height="15" /></td>
+                        <td class="tooltip-top-center-b"></td>
+                        <td class="tooltip-corner-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_04b.png")%>" width="7" height="15" /></td>
+                    </tr>
+                    <tr>
+                        <td class="tooltip-mid-left-b">
+                        </td>
+                        <td class="tooltip-mid-center-b">
+                            <div class="pop-login-block">
+                                <div class="pop-login-title">
+                                    Login</div>
+                                <div class="pop-login-text">
+                                    Por favor ingrese su usuario y contraseña. Contáctenos si no tiene una cuenta.</div>
+                                <div class="loginFieldLabel">
+                                    Usuario<span>*</span></div>
+                                <div class="loginField">
+                                    <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
+                                        ErrorMessage="" Display="None" ToolTip="Campo requerido." 
+                                        ValidationGroup="LoginUserValidationGroup"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="loginFieldLabel">
+                                    Contraseña<span>*</span></div>
+                                <div class="loginField">
+                                    <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
+                                        ErrorMessage="" Display="None" ToolTip="Campo requerido." 
+                                        ValidationGroup="LoginUserValidationGroup"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="pop-login-legend">
+                                    <div>
+                                        <asp:CheckBox ID="RememberMe" runat="server"/><span>Mantenerme logeado</span>
+                                    </div>
+                                </div>
+                                <div class="button-container ali-c">
+                                    <asp:Button runat="server" ID="LoginButton" CommandName="Login" CssClass="btn-blue-small" Text="login" ValidationGroup="LoginUserValidationGroup" />
+                                </div>
+                                <div>
+                                    <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="error-message"
+                                        HeaderText="Debe completar los campos requeridos." ValidationGroup="LoginUserValidationGroup"/>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="tooltip-mid-right-b">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tooltip-corner-left-bottom-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_10b.png")%>" width="7" height="7" /></td>
+                        <td class="tooltip-bottom-center-b"></td>
+                        <td class="tooltip-corner-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_13b.png")%>" width="7" height="7" /></td>
+                    </tr>
+                </table>
+                </LayoutTemplate>
+            </asp:Login>
+            </AnonymousTemplate>
+            <LoggedInTemplate>
+                  <table class="tooltip-table-b" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td class="tooltip-corner-left-top-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_01b.png")%>" width="7" height="15" /></td>
+                      <td class="tooltip-top-center-b"></td>
+                      <td class="tooltip-corner-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_04b.png")%>" width="7" height="15" /></td>
+                    </tr>
+                    <tr>
+                      <td class="tooltip-mid-left-b"></td>
+                      <td class="tooltip-mid-center-b"><div class="pop-login-block-mod">
+                          <div class="pop-login-title">Bienvenido <span><%--<asp:LoginName ID="LoginName" runat="server" />--%><%= GetUserFullName() %></span></div></div></td>
+                      <td class="tooltip-mid-right-b"></td>
+                    </tr>
+                    <tr>
+                      <td class="tooltip-corner-left-bottom-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_10b.png")%>" width="7" height="7" /></td>
+                      <td class="tooltip-bottom-center-b"></td>
+                      <td class="tooltip-corner-b"><img src="<%=ResolveClientUrl("~/Content/Images/tooltip-images/red_tooltip_13b.png")%>" width="7" height="7" /></td>
+                    </tr>
+                  </table>
+            </LoggedInTemplate>
+        </asp:LoginView>
+
+          
+        </div>
+        <div class="content-header-logo">
+            <a href="#">
+                <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Content/Images/trackme_logo.png" width="365" height="87" border="0" align="left" />
+            </a>
+        </div>
+     </div>
+    <div class="content-header-banner">
+        <div id="mainBanner">
+            <div id="bannerImages"><img alt="Price of Persia" src="<%=ResolveClientUrl("~/Content/Images/banner_pic_1.jpg")%>" /><img alt="Spiderman: Shattered Dimensions" src="<%=ResolveClientUrl("~/Content/Images/banner_pic_2.jpg")%>" /><img alt="Brink" src="<%=ResolveClientUrl("~/Content/Images/banner_pic_3.jpg")%>" /></div>
+        </div>
+    </div>
+   </div>
+    <div class="second-banner-control">
+      <div class="second-banner-control-content">
+        <asp:Panel ID="pnlGeneral" runat="server" Visible="true">
+            <div class="second-banner-block">
+              <div class="second-banner-block-title"><span>01.</span> Posicionamiento en tiempo real</div>
+              <div class="second-banner-block-text">Visualizá la posición de tu vehículo las 24 horas todos los días del año.</div>
+              <div class="second-banner-block-view-more"><a href="<%=ResolveClientUrl("~/Site/Services.aspx")%>">LEER MAS</a></div>
+            </div>
+            <div class="second-banner-block">
+              <div class="second-banner-block-title"><span>02.</span> Marcación de la ruta tomada</div>
+              <div class="second-banner-block-text">Podés ver reflejado en el mapa la ruta exacta que tu móvil ha tomado.</div>
+              <div class="second-banner-block-view-more"><a href="<%=ResolveClientUrl("~/Site/Services.aspx")%>">LEER MAS</a></div>
+            </div>
+            <div class="second-banner-block">
+              <div class="second-banner-block-title"><span>03.</span> Historial, direcciones y rutas.</div>
+              <div class="second-banner-block-text">Encontrá registros de las rutas realizadas por cada uno de tus vehículos, así como también direcciones y distancias recorridas.</div>
+              <div class="second-banner-block-view-more"><a href="<%=ResolveClientUrl("~/Site/Services.aspx")%>">LEER MAS</a></div>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="pnlAdmin" runat="server" Visible="false">
+            <ul class="admin-menu">
+                <li><asp:HyperLink runat="server" ID="btnUserManagement" ToolTip="Administración de usuarios" Text="Administración de usuarios" NavigateUrl="~/Site/Admin/UserManagement.aspx" /></li>
+                <li><asp:HyperLink runat="server" ID="btnDeviceManagement" ToolTip="Administración de dispositivos" Text="Administración de dispositivos" NavigateUrl="~/Site/Admin/DeviceManagement.aspx" /></li>
+                <li><asp:HyperLink runat="server" ID="btnUserDeviceManagement" ToolTip="Asignación de dispositivos" Text="Asignación de dispositivos" NavigateUrl="~/Site/Admin/UserDeviceManagement.aspx" /></li>
+            </ul>
+        </asp:Panel>
+        <asp:Panel ID="pnlUser" runat="server" Visible="false">
+            <ul class="admin-menu">
+                <li><asp:HyperLink runat="server" ID="btnLocalizacionActual" ToolTip="Localización actual" Text="Localización actual" NavigateUrl="~/Site/User/CurrentLocation.aspx" /></li>
+                <li><asp:HyperLink runat="server" ID="btnHistorial" ToolTip="Historial" Text="Historial" NavigateUrl="~/Site/User/Background.aspx" /></li>
+                <li><asp:HyperLink runat="server" ID="btnReportes" ToolTip="Reportes" Text="Reportes" NavigateUrl="" /></li>      
+                <li><asp:HyperLink runat="server" ID="btnAdministracion" ToolTip="Administración" Text="Administración" NavigateUrl="" /></li>      
+            </ul>
+        </asp:Panel>
+      </div>
+    </div>
+    <div class="main-body">
+      <div class="content-body">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+      </div>
+    </div>
+    <div class="main-footer">
+      <div class="content-footer">
+        <div class="content-footer-menu"><img src="<%=ResolveClientUrl("~/Content/Images/footer_pic_1.png")%>" alt="." width="260" height="165" border="0" /><img src="<%=ResolveClientUrl("~/Content/Images/footer_pic_2.png")%>" alt="." width="260" height="165" border="0" /><img src="<%=ResolveClientUrl("~/Content/Images/footer_pic_3.png")%>" alt="." width="260" height="165" border="0" /></div>
+        <div class="footer-info">
+          <div class="footer-social-links"><span>Seguinos en:</span><a href="#"><img src="<%=ResolveClientUrl("~/Content/Images/face_icon.png")%>" width="20" height="20" /></a></div>
+          <div class="footer-copyrights"> Copyright 2012. TRACKME ® . Todos los derechos reservados<br />
+            <a href="http://www.trizais.com.ar">Dise&ntilde;o y desarrollo TRIZAIS &reg; DESIGN</a></div>
+        </div>
+      </div>
+    </div>
+    <div id="popupDiv" class="overlay-box" style="display: none; position: fixed; float: left;">
+        <div class="PopUpWrapper wdt-510" style="height: auto;">
+            <div style="height: auto; text-align: left;">
+                <div id="Div2" align="left" class="pop-up-title" valign="top">
+                    <span id="title">Titulo</span>
+                    <img src='<%=ResolveClientUrl("~/Content/Images/icon-vista-close.png")%>' alt="Close" class="close-icon f-r" onclick="jQuery('#popupDiv').toggle();" />
+                </div>
+                <div id="contentPopupDiv" style="width: 490px;overflow:auto;" class="PopUpWrapperContent">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $('#bannerImages').coinslider({ hoverPause: false });
+        });
+    </script>
+    </form>
+</body>
+</html>

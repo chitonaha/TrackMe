@@ -1,0 +1,98 @@
+/* Shoplins Css*/
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:transparent none repeat scroll 0 0;
+	border:none;
+	margin:0;
+	outline-color:-moz-use-text-color;
+	outline-style:none;
+	outline-width:0;
+	padding:0;
+}
+body {
+	-x-system-font:none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1;
+	position:relative;
+	font-size:11px;
+	
+}
+ol, ul {
+	list-style-image:none;
+	list-style-position:inside;
+	list-style-type:none;
+}
+blockquote, q {
+	quotes:none;
+}
+button:focus, input:focus, textarea:focus {
+	outline-color:-moz-use-text-color;
+	outline-style:none;
+	outline-width:0;
+}
+em {
+	font-style:normal;
+}
+ins {
+	text-decoration:none;
+}
+del {
+	text-decoration:line-through;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+a {
+	font-weight:bold;
+	text-decoration:none;
+}
+a * {
+	cursor:pointer;
+}
+button, input, option, select, textarea {
+	font-family:arial, helvetica, sans-serif;
+}
+caption, th, td {
+	font-weight:normal;
+	text-align:left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight:bold;
+}
+h1 {
+	font-size:18px;
+}
+h2 {
+	font-size:16px;
+}
+h3 {
+	font-size:11px;
+}
+h4 {
+	font-size:12px;
+}
+h5 {
+	font-size:11px;
+	font-weight:bold
+}
+legend {
+	display:none;
+}
+div.clear {
+	clear:both;
+	font-size:1px;
+	height:0;
+	line-height:1px;
+	overflow:hidden;
+	visibility:hidden;
+}

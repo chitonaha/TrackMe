@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8CCAE412-5CD9-4BF7-851E-E2D5C89D09D1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrackMe.Web</RootNamespace>
+    <AssemblyName>TrackMe.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\SharedBinaries\Elmah\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\back.png" />
+    <Content Include="Content\Images\banner_bg.png" />
+    <Content Include="Content\Images\banner_pic_1.jpg" />
+    <Content Include="Content\Images\banner_pic_2.jpg" />
+    <Content Include="Content\Images\banner_pic_3.jpg" />
+    <Content Include="Content\Images\bullet_4_arrow.png" />
+    <Content Include="Content\Images\bullet_dot.png" />
+    <Content Include="Content\Images\button_blue_large.png" />
+    <Content Include="Content\Images\button_blue_medium.png" />
+    <Content Include="Content\Images\button_blue_small.png" />
+    <Content Include="Content\Images\face_icon.png" />
+    <Content Include="Content\Images\footer_pic_1.png" />
+    <Content Include="Content\Images\footer_pic_2.png" />
+    <Content Include="Content\Images\footer_pic_3.png" />
+    <Content Include="Content\Images\form_blue_btn.png" />
+    <Content Include="Content\Images\form_blue_btn_large.png" />
+    <Content Include="Content\Images\forward.png" />
+    <Content Include="Content\Images\globe.png" />
+    <Content Include="Content\Images\goolge-map.jpg" />
+    <Content Include="Content\Images\icon-vista-close.png" />
+    <Content Include="Content\Images\icon_arrow_r.png" />
+    <Content Include="Content\Images\icon_control.png" />
+    <Content Include="Content\Images\icon_menu_company.png" />
+    <Content Include="Content\Images\icon_menu_contact.png" />
+    <Content Include="Content\Images\icon_menu_home.png" />
+    <Content Include="Content\Images\icon_menu_login.png" />
+    <Content Include="Content\Images\icon_menu_logout.png" />
+    <Content Include="Content\Images\icon_menu_service.png" />
+    <Content Include="Content\Images\icon_productivity.png" />
+    <Content Include="Content\Images\icon_report.png" />
+    <Content Include="Content\Images\icon_response.png" />
+    <Content Include="Content\Images\icon_satelite.png" />
+    <Content Include="Content\Images\icon_save_up.png" />
+    <Content Include="Content\Images\icon_search.png" />
+    <Content Include="Content\Images\icon_security.png" />
+    <Content Include="Content\Images\icon_upgrade.png" />
+    <Content Include="Content\Images\main_footer_bg.png" />
+    <Content Include="Content\Images\main_header_bg - Copy.png" />
+    <Content Include="Content\Images\main_header_bg.png" />
+    <Content Include="Content\Images\map_sample.png" />
+    <Content Include="Content\Images\map_sample_b.png" />
+    <Content Include="Content\Images\pin_a.png" />
+    <Content Include="Content\Images\pin_b.png" />
+    <Content Include="Content\Images\pin_c.png" />
+    <Content Include="Content\Images\pin_d.png" />
+    <Content Include="Content\Images\pin_f.png" />
+    <Content Include="Content\Images\product_full.png" />
+    <Content Include="Content\Images\product_lite.png" />
+    <Content Include="Content\Images\progress.gif" />
+    <Content Include="Content\Images\second_banner_bg.png" />
+    <Content Include="Content\Images\smartphone_pic.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_01b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_02b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_04b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_05b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_06.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_06b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_07b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_10b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_12b.png" />
+    <Content Include="Content\Images\tooltip-images\red_tooltip_13b.png" />
+    <Content Include="Content\Images\trackme_logo.png" />
+    <Content Include="Content\Images\trackme_logo_admin.png" />
+    <Content Include="Content\Images\trackme_logo_panel_control.png" />
+    <Content Include="Content\Images\welcome_pic_1.png" />
+    <Content Include="Content\Images\welcome_pic_2.png" />
+    <Content Include="Content\Scripts\coin-slider.min.js" />
+    <Content Include="Content\Scripts\jquery.watermark.min.js" />
+    <Content Include="Content\Styles\coin-slider-styles.css" />
+    <Content Include="Content\Styles\main-reset.css" />
+    <Content Include="Content\Styles\main-template.css" />
+    <Content Include="Site\AboutUs.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\LogOut.aspx" />
+    <Content Include="Content\Scripts\track.me.framework.js" />
+    <Content Include="Content\Scripts\track.me.utils.js" />
+    <Content Include="Site\Admin\AdminDashboard.aspx" />
+    <Content Include="Site\Admin\DeviceManagement.aspx" />
+    <Content Include="Site\Admin\UserDeviceManagement.aspx" />
+    <Content Include="Site\Admin\UserManagement.aspx" />
+    <Content Include="Site\ContactUs.aspx" />
+    <Content Include="Site\ForkFromLogin.aspx" />
+    <Content Include="Site\Services.aspx" />
+    <Content Include="Site\User\Administration.aspx" />
+    <Content Include="Site\User\Background.aspx" />
+    <Content Include="Site\User\CurrentLocation.aspx" />
+    <Content Include="Site\User\UserDashboard.aspx" />
+    <Content Include="Site\Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Templates\ContactEmail.htm" />
+    <Content Include="Templates\MarkInfo.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Site\WebMethods.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\AdminPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\GeneralPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SecondBannerType.cs" />
+    <Compile Include="Pages\UserPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Admin\AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Admin\AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Admin\DeviceManagement.aspx.cs">
+      <DependentUpon>DeviceManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Admin\DeviceManagement.aspx.designer.cs">
+      <DependentUpon>DeviceManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Admin\UserDeviceManagement.aspx.cs">
+      <DependentUpon>UserDeviceManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Admin\UserDeviceManagement.aspx.designer.cs">
+      <DependentUpon>UserDeviceManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Admin\UserManagement.aspx.cs">
+      <DependentUpon>UserManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Admin\UserManagement.aspx.designer.cs">
+      <DependentUpon>UserManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\ForkFromLogin.aspx.cs">
+      <DependentUpon>ForkFromLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\ForkFromLogin.aspx.designer.cs">
+      <DependentUpon>ForkFromLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\User\Administration.aspx.cs">
+      <DependentUpon>Administration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\User\Administration.aspx.designer.cs">
+      <DependentUpon>Administration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\User\Background.aspx.cs">
+      <DependentUpon>Background.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\User\Background.aspx.designer.cs">
+      <DependentUpon>Background.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\User\CurrentLocation.aspx.cs">
+      <DependentUpon>CurrentLocation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\User\CurrentLocation.aspx.designer.cs">
+      <DependentUpon>CurrentLocation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site\User\UserDashboard.aspx.cs">
+      <DependentUpon>UserDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\User\UserDashboard.aspx.designer.cs">
+      <DependentUpon>UserDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\TemplatesManager.cs" />
+    <Compile Include="Site\WebMethods.aspx.cs">
+      <DependentUpon>WebMethods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site\WebMethods.aspx.designer.cs">
+      <DependentUpon>WebMethods.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\tooltip-images\_notes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrackMe.Business\TrackMe.Business.csproj">
+      <Project>{472F1146-CB79-4D42-B30C-4DFA72B6D4B8}</Project>
+      <Name>TrackMe.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackMe.Model\TrackMe.Model.csproj">
+      <Project>{8B2F34A7-7218-4918-A307-A61F951C6C6D}</Project>
+      <Name>TrackMe.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackMe.Support.IoC\TrackMe.Support.IoC.csproj">
+      <Project>{C6E101B3-A161-429C-8B73-892A8394B199}</Project>
+      <Name>TrackMe.Support.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackMe.Support\TrackMe.Support.csproj">
+      <Project>{79E911E2-AC46-494E-B41A-E5D47E0F7616}</Project>
+      <Name>TrackMe.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackMe.Web.Support\TrackMe.Web.Support.csproj">
+      <Project>{30A04314-91BB-4DB2-8501-7FFE4CF5D0CE}</Project>
+      <Name>TrackMe.Web.Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58924</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
